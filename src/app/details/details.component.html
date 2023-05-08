@@ -1,0 +1,18 @@
+<button
+  class="btn btn-primary"
+  [innerText]="showDetails !== true ? 'Show Details' : 'Hide Details'"
+  (click)="onClick()"
+>
+  Display Details
+</button>
+<p *ngIf="showDetails">Secret Password = Luffy</p>
+<p *ngIf="countA.length > 0">Click Count :</p>
+<ul *ngIf="countA.length > 0">
+  <li
+    *ngFor="let count of countA"
+    [ngStyle]="{ 'color': count >= 5 && 'white' }"
+    [ngClass]="{ 'abv-fifth': count >= 5 }"
+  >
+    {{ count }}
+  </li>
+</ul>
