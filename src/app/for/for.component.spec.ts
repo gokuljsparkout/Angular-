@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GifComponent } from './gif.component';
+import { ForComponent } from './for.component';
 
-describe('GifComponent', () => {
-  let component: GifComponent;
-  let fixture: ComponentFixture<GifComponent>;
+describe('ForComponent', () => {
+  let component: ForComponent;
+  let fixture: ComponentFixture<ForComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [GifComponent]
+      declarations: [ForComponent]
     });
-    fixture = TestBed.createComponent(GifComponent);
+    fixture = TestBed.createComponent(ForComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -6,9 +6,15 @@ import { ServersComponent } from './servers/servers.component';
 import { ServerComponent } from './server/server.component';
 import { FormsModule } from '@angular/forms';
 import { DetailsComponent } from './details/details.component';
-import { GifComponent } from './gif/gif.component';
+import { ForComponent } from './for/for.component';
 @NgModule({
-  declarations: [AppComponent, ServersComponent, ServerComponent, DetailsComponent, GifComponent,],
+  declarations: [
+    AppComponent,
+    ServersComponent,
+    ServerComponent,
+    DetailsComponent,
+    ForComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
