@@ -10,8 +10,8 @@
 <ul *ngIf="countA.length > 0">
   <li
     *ngFor="let count of countA"
-    [ngStyle]="{ 'color': count >= 5 && 'white' }"
-    [ngClass]="{ 'abv-fifth': count >= 5 }"
+    [ngStyle]="{ 'color': count %2 === 0 ? 'white':'green' }"
+    [ngClass]="{ 'abv-fifth': count %2 === 0}"
   >
     {{ count }}
   </li>
