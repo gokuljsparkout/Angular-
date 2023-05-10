@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./server-element.component.css'],
 })
 export class ServerElementComponent implements OnInit {
-  @Input() element: { type: string; name: string; content: string };
+  @Input('srvElement') element: { type: string; name: string; content: string };
   //With this element property is declared properly
   //Now any parent component hosting this component
   //Is able to bind to this element
