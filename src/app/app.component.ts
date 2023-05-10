@@ -6,42 +6,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  // serverElements = [
-  // ];
+  serverElements = [
+  ];
 
-  // onServerAdded(serverData: { serverName: string; serverContent: string }) {
-  //   this.serverElements.push({
-  //     type: 'server',
-  //     name: serverData.serverName,
-  //     content: serverData.serverContent,
-  //   });
-  // }
+  onServerAdded(serverData: { serverName: string; serverContent: string }) {
+    this.serverElements.push({
+      type: 'server',
+      name: serverData.serverName,
+      content: serverData.serverContent,
+    });
+  }
 
-  // onBlueprintAdded(blueprintData: {
-  //   blueprintName: string;
-  //   blueprintContent: string;
-  // }) {
-  //   this.serverElements.push({
-  //     type: 'blueprint',
-  //     name: blueprintData.blueprintName,
-  //     content: blueprintData.blueprintContent,
-  //   });
-  // }
-  // counter = 0;
-
-  // onIncremented(counter:number) {
-  //   this.counter = counter;
-  // }
-  // onDecremented(counter:number) {
-  //   this.counter = counter;
-  // }
-
-  count=0;
-onIncrement(element :{count:number}){
-  //onIncrement(count:number)
-  this.count = element.count;
-}
-onDecrement(element : {count:number}){
-  this.count = element.count;
-}
+  onBlueprintAdded(blueprintData: {
+    blueprintName: string;
+    blueprintContent: string;
+  }) {
+    this.serverElements.push({
+      type: 'blueprint',
+      name: blueprintData.blueprintName,
+      content: blueprintData.blueprintContent,
+    });
+  }
+  
 }

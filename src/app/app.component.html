@@ -1,4 +1,4 @@
-<!-- <div class="container">
+<div class="container">
   <app-cockpit
     (serverCreated)="onServerAdded($event)"
     (bpCreated)="onBlueprintAdded($event)"
@@ -12,39 +12,4 @@
       ></app-server-element>
     </div>
   </div>
-</div> -->
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-body d-flex flex-column align-items-center">
-          <app-counter [counter]="counter"></app-counter>
-          <div class="mt-3">
-            <app-counter-control
-              [counter]="counter"
-              (incremented)="onIncremented($event.counter)"
-              (decremented)="onDecremented($event.counter)"
-            ></app-counter-control>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-<div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-body d-flex flex-column align-items-center">
-          <app-counter-view [count]="count"></app-counter-view>
-          <div class="mt-3">
-            <app-counter-controls [count]="count"
-            (incremented)="onIncrement($event)"
-            (decremented)="onDecrement($event)"></app-counter-controls>
-          </div>
-          <!-- (incremented)="onIncrement($event.count)" -->
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+</div> 
