@@ -27,12 +27,21 @@ export class AppComponent {
   //     content: blueprintData.blueprintContent,
   //   });
   // }
-  counter = 0;
+  // counter = 0;
 
-  onIncremented(counter:number) {
-    this.counter = counter;
-  }
-  onDecremented(counter:number) {
-    this.counter = counter;
-  }
+  // onIncremented(counter:number) {
+  //   this.counter = counter;
+  // }
+  // onDecremented(counter:number) {
+  //   this.counter = counter;
+  // }
+
+  count=0;
+onIncrement(element :{count:number}){
+  //onIncrement(count:number)
+  this.count = element.count;
+}
+onDecrement(element : {count:number}){
+  this.count = element.count;
+}
 }

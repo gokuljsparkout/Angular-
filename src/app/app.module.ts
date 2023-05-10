@@ -7,6 +7,8 @@ import { CockpitComponent } from './cockpit/cockpit.component';
 import { ServerElementComponent } from './server-element/server-element.component';
 import { CounterComponent } from './Counter/counter/counter.component';
 import { CounterControlComponent } from './Counter/counter-control/counter-control.component';
+import { CounterViewComponent } from './Counter-App/counter-view/counter-view.component';
+import { CounterControlsComponent } from './Counter-App/counter-controls/counter-controls.component';
 
 
 @NgModule({
@@ -16,6 +18,8 @@ import { CounterControlComponent } from './Counter/counter-control/counter-contr
     ServerElementComponent,
     CounterComponent,
     CounterControlComponent,
+    CounterViewComponent,
+    CounterControlsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

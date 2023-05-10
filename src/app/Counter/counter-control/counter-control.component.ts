@@ -7,18 +7,18 @@ import { Component, EventEmitter,Output,Input } from '@angular/core';
 })
 export class CounterControlComponent {
   @Input() counter: number;
-  @Output() incremented = new EventEmitter<{number}>();
-  @Output() decremented = new EventEmitter<{number}>();
+  @Output() incremented = new EventEmitter<{counter:number}>();
+  @Output() decremented = new EventEmitter<{counter:number}>();
 
 
   increment() {
     this.counter++;
-    this.incremented.emit({ number: this.counter });
+    this.incremented.emit({ counter: this.counter });
   }
   
   decrement() {
     this.counter--;
-    this.decremented.emit({ number: this.counter });
+    this.decremented.emit({ counter: this.counter });
   }
 
 }
