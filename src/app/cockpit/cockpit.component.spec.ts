@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ForComponent } from './for.component';
+import { CockpitComponent } from './cockpit.component';
 
-describe('ForComponent', () => {
-  let component: ForComponent;
-  let fixture: ComponentFixture<ForComponent>;
+describe('CockpitComponent', () => {
+  let component: CockpitComponent;
+  let fixture: ComponentFixture<CockpitComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ForComponent]
+      declarations: [CockpitComponent]
     });
-    fixture = TestBed.createComponent(ForComponent);
+    fixture = TestBed.createComponent(CockpitComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
