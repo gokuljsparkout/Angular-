@@ -4,6 +4,7 @@
   <div class="row">
     <div class="col-xs-12">
       <app-server-element
+        [element]="serverElement"
         *ngFor="let serverElement of serverElements"
       ></app-server-element>
     </div>
