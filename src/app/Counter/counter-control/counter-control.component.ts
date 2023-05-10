@@ -11,13 +11,14 @@ export class CounterControlComponent {
   @Output() decremented = new EventEmitter<{number}>();
 
 
-
-  increment(){
-    this.decremented.emit({ number: this.counter++ });
+  increment() {
+    this.counter++;
+    this.incremented.emit({ number: this.counter });
   }
-
-  decrement(){
-    this.decremented.emit({ number: this.counter-- });
+  
+  decrement() {
+    this.counter--;
+    this.decremented.emit({ number: this.counter });
   }
 
 }
