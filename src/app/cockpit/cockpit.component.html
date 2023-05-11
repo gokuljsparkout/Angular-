@@ -5,14 +5,12 @@
     <!-- <input type="text" class="form-control" [(ngModel)]="newServerName" /> -->
     <input type="text" class="form-control" #ServerNameInput />
     <label>Server Content</label>
-    <!-- <input type="text" class="form-control" [(ngModel)]="newServerContent" /> -->
+    <!-- <input type="text" class="form-control" [(ngModel)]="newServerContent" /F> -->
     <input type="text" class="form-control" #ServerContentInput />
 
     <br />
-    <button class="btn btn-primary" (click)="onAddServer(ServerNameInput,ServerContentInput)">
-      Add Server
-    </button>
-    <button class="btn btn-primary" (click)="onAddBlueprint(ServerContentInput,ServerContentInput)">
+    <button class="btn btn-primary" (click)="onAddServer()">Add Server</button>
+    <button class="btn btn-primary" (click)="onAddBlueprint()">
       Add Server Blueprint
     </button>
   </div>
