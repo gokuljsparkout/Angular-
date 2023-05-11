@@ -20,6 +20,7 @@ export class ServerElementComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     console.log('ng-OnChanges called');
     console.log(changes);
+     console.log(changes['element']['currentValue'].content);
   }
   ngOnInit() {
     console.log('ngInit called');
