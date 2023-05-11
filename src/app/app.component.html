@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <app-cockpit
     (serverCreated)="onServerAdded($event)"
     (bpCreated)="onBlueprintAdded($event)"
@@ -19,10 +19,21 @@
             serverElement.content
           }}</strong>
           <em *ngIf="serverElement.type === 'blueprint'">{{
-            serverElement.content
+            serverElement.content 
           }}</em>
         </p></app-server-element
       >
     </div>
+  </div>
+</div> -->
+<app-book-edit (bookadded)="onBookAdded($event)"></app-book-edit>
+<div>
+  <h1>Book List</h1>
+  <div>
+    <app-book-list
+      *ngFor="let book of books"
+      [book]="book"
+      (bookremoved)="onBookRemove(book)"
+    ></app-book-list>
   </div>
 </div>

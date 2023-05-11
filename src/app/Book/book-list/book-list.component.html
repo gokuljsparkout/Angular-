@@ -1,0 +1,9 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">Book Information</h5>
+    <p class="card-text">Title : {{ book.title }}</p>
+    <p class="card-text">Author : {{ book.author }}</p>
+    <p class="card-text">Publication Year : {{ book.publication_year }}</p>
+    <button class="btn btn-danger" (click)="removeBook(book)">Remove Book</button>
+  </div>
+</div>
