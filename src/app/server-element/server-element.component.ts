@@ -13,6 +13,7 @@ import {
 })
 export class ServerElementComponent implements OnInit, OnChanges {
   @Input('srvElement') element: { type: string; name: string; content: string };
+  @Input() name: string;
 
   constructor() {
     console.log('constructor called');
@@ -20,7 +21,6 @@ export class ServerElementComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     console.log('ng-OnChanges called');
     console.log(changes);
-     console.log(changes['element']['currentValue'].content);
   }
   ngOnInit() {
     console.log('ngInit called');

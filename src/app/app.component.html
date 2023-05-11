@@ -6,15 +6,21 @@
   <hr />
   <div class="row">
     <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="onChangeFirst()">
+        Change first element
+      </button>
       <app-server-element
         [srvElement]="serverElement"
+        [name]="serverElement.name"
         *ngFor="let serverElement of serverElements"
       >
         <p>
           <strong *ngIf="serverElement.type === 'server'" style="color: red">{{
             serverElement.content
           }}</strong>
-          <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+          <em *ngIf="serverElement.type === 'blueprint'">{{
+            serverElement.content
+          }}</em>
         </p></app-server-element
       >
     </div>
