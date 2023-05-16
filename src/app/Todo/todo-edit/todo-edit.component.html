@@ -1,0 +1,24 @@
+<label for="name">Name</label>
+<input type="text" name="name" #TaskNameInput />
+<hr />
+<!-- <label for="difficulty">Difficulty</label>
+<div>
+  <input type="radio" id="easy" name="difficulty" value="easy" #TaskDifficultyInput />
+  <label for="easy">Easy</label>
+</div>
+<div>
+  <input type="radio" id="medium" name="difficulty" value="medium" #TaskDifficultyInput />
+  <label for="medium">Medium</label>
+</div>
+<div>
+  <input type="radio" id="hard" name="difficulty" value="hard" #TaskDifficultyInput />
+  <label for="hard">Hard</label>
+</div> -->
+<select #TaskDifficultyInput>
+  <option value="easy">Easy</option>
+  <option value="medium">Medium</option>
+  <option value="hard">Hard</option>
+</select>
+<hr />
+<button (click)="onTaskAdd(TaskNameInput, TaskDifficultyInput)">Add</button>
+<button (click)="onClear()">Clear</button>

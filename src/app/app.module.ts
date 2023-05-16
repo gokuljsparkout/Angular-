@@ -5,16 +5,17 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { CockpitComponent } from './cockpit/cockpit.component';
 import { ServerElementComponent } from './server-element/server-element.component';
-import { BookListComponent } from './Book/book-list/book-list.component';
-import { BookEditComponent } from './Book/book-edit/book-edit.component';
+import { TodoListComponent } from './Todo/todo-list/todo-list.component';
+import { TodoEditComponent } from './Todo/todo-edit/todo-edit.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     CockpitComponent,
     ServerElementComponent,
-    BookListComponent,
-    BookEditComponent,
+    TodoListComponent,
+    TodoEditComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

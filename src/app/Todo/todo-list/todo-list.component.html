@@ -1,0 +1,15 @@
+<ul>
+  <li
+    [ngStyle]="{
+      'color': getDifficultyColor(),
+     'text-decoration': getCompletionStatus(),
+     'text-decoration-color' : 'black'
+    }"
+  >
+    {{ task.name }}
+    <span>
+      <button class="btn btn-danger" (click)="onDeleteTask(task)">Delete</button>
+      <button class="btn btn-success" (click)="changeCompletionStatus(task)">Completed</button></span
+    >
+  </li>
+</ul>

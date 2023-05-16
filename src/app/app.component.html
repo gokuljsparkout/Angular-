@@ -26,7 +26,7 @@
     </div>
   </div>
 </div> -->
-<app-book-edit (bookadded)="onBookAdded($event)"></app-book-edit>
+<!-- <app-book-edit (bookadded)="onBookAdded($event)"></app-book-edit>
 <div>
   <h1>Book List</h1>
   <div>
@@ -36,4 +36,11 @@
       (bookremoved)="onBookRemove(book)"
     ></app-book-list>
   </div>
+</div> -->
+
+<div>
+  <!-- <app-todo-edit (addTask)="taskAdded($event)"></app-todo-edit> -->
+  <app-todo-edit (addTask)="taskAdded($event)" (clear)="clearTasks()"></app-todo-edit>
+  <h2>Tasks</h2>
+  <app-todo-list *ngFor="let task of tasks" [task]="task" (deleteTask)="taskDeleted($event)"(changeTaskStatus)='statusChanged($event)'></app-todo-list>
 </div>
