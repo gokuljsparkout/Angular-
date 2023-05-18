@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { OddComponent } from './directives/odd/odd.component';
+import { BasicHighlightDirective } from './basic-highlight/basic.highlight.directive';
 // import { CockpitComponent } from './cockpit/cockpit.component';
 // import { ServerElementComponent } from './server-element/server-element.component';
 
@@ -12,6 +13,7 @@ import { OddComponent } from './directives/odd/odd.component';
   declarations: [
     AppComponent,
     OddComponent,
+    BasicHighlightDirective
     // CockpitComponent,
     // ServerElementComponent,
   ],
