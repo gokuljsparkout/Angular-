@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { OddComponent } from './directives/odd/odd.component';
 import { BasicHighlightDirective } from './basic-highlight/basic.highlight.directive';
 import { BetterHighlightDirective } from './customDirectives/better-highlight.directive';
+import { UnlessDirective } from './customDirectives/unless.directive';
 // import { CockpitComponent } from './cockpit/cockpit.component';
 // import { ServerElementComponent } from './server-element/server-element.component';
 
@@ -15,7 +16,8 @@ import { BetterHighlightDirective } from './customDirectives/better-highlight.di
     AppComponent,
     OddComponent,
     BasicHighlightDirective,
-    BetterHighlightDirective
+    BetterHighlightDirective,
+    UnlessDirective
     // CockpitComponent,
     // ServerElementComponent,
   ],
