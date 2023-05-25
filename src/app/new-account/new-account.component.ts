@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { LoggingService } from '../logging.service';
-import { AccountComponent } from '../account/account.component';
 import { AccountService } from '../account.service';
 
 @Component({
   selector: 'app-new-account',
   templateUrl: './new-account.component.html',
   styleUrls: ['./new-account.component.css'],
-  providers: [LoggingService, AccountService],
+  providers: [LoggingService],
 })
 export class NewAccountComponent {
   constructor(
