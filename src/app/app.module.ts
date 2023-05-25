@@ -3,24 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { OddComponent } from './directives/odd/odd.component';
-import { BasicHighlightDirective } from './basic-highlight/basic.highlight.directive';
-import { BetterHighlightDirective } from './customDirectives/better-highlight.directive';
-import { UnlessDirective } from './customDirectives/unless.directive';
-// import { CockpitComponent } from './cockpit/cockpit.component';
-// import { ServerElementComponent } from './server-element/server-element.component';
-
+import { AccountComponent } from './account/account.component';
+import { NewAccountComponent } from './new-account/new-account.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    OddComponent,
-    BasicHighlightDirective,
-    BetterHighlightDirective,
-    UnlessDirective
-    // CockpitComponent,
-    // ServerElementComponent,
-  ],
+  declarations: [AppComponent, AccountComponent, NewAccountComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
