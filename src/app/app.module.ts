@@ -3,15 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { AccountComponent } from './account/account.component';
-import { NewAccountComponent } from './new-account/new-account.component';
-import { AccountService } from './account.service';
-import { LoggingService } from './logging.service';
+import { HomeComponent } from './home/home.component';
+import { ServersComponent } from './servers/servers.component';
+import { UsersComponent } from './users/users.component';
+import { UserComponent } from './users/user/user.component';
+import { EditServerComponent } from './servers/edit-server/edit-server.component';
+import { ServerComponent } from './servers/server/server.component';
+import { ServersService } from './servers/servers.service';
+
 
 @NgModule({
-  declarations: [AppComponent, AccountComponent, NewAccountComponent],
+  declarations: [AppComponent, HomeComponent, ServersComponent, UsersComponent, UserComponent,EditServerComponent, ServerComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [AccountService, LoggingService],
+  providers: [ServersService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
