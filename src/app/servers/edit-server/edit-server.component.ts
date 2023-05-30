@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServersService } from '../servers.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-edit-server',
@@ -11,15 +11,19 @@ export class EditServerComponent implements OnInit {
   server: { id: number; name: string; status: string };
   serverName = '';
   serverStatus = '';
+  allowEdit: boolean = true;
 
   constructor(
     private serversService: ServersService,
-    private router: ActivatedRoute
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-   console.log(this.router.snapshot.queryParams);
-   console.log(this.router.snapshot.fragment);
+    this.route.queryParams.subscribe((queryParams: Params) => {
+      console.log(this.route);
+      this.allowEdit = queryParams['allowEdit'] === '1' ? true : false;
+      console.log(queryParams['allowEdit']);
+    });
     this.server = this.serversService.getServer(1);
     this.serverName = this.server.name;
     this.serverStatus = this.server.status;
