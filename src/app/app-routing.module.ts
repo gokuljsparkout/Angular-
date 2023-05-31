@@ -26,8 +26,8 @@ const routes: Routes = [
     // canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
     component: ServersComponent,
-    resolve : {
-      server : ServerResolver
+    resolve: {
+      server: ServerResolver,
     },
     children: [
       { path: ':id', component: ServerComponent },
@@ -45,7 +45,7 @@ const routes: Routes = [
   {
     path: 'not-found',
     component: ErrorPageComponent,
-    data : {message: 'Page Not Found'}
+    data: { message: 'Page Not Found' },
   },
   {
     path: '**',
@@ -54,7 +54,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    // RouterModule.forRoot(routes, { useHash: true }),
+    RouterModule.forRoot(routes),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
