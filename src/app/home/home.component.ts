@@ -1,26 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
+import { Subscription, interval } from 'rxjs';
+import { Observable } from 'rxjs-compat';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
-  constructor(private router: Router, private authService: AuthService) {}
-  onLoadServer(id: number) {
-    this.router.navigate(['/servers', id, 'edit'], {
-      queryParams: { allowEdit: '1' },
-      fragment: 'loading',
+export class HomeComponent implements OnInit, OnDestroy {
+  private intervalSubscription: Subscription;
+  ngOnInit() {
+    // this.intervalSubscription = interval(1000).subscribe((count) => {
+    //   console.log(count);
+    // });
+
+    const customIntervalObservable = Observable.create((observer) => {
+      let count = 0;
+      setInterval(() => {
+        observer.next(count++);
+      }, 1000);
+    });
+    this.intervalSubscription = customIntervalObservable.subscribe((count) => {
+      console.log(count);
     });
   }
-  ngOnInit() {}
-
-  onLogin() {
-    this.authService.login();
-  }
-  onLogout() {
-    this.authService.logout();
+  ngOnDestroy() {
+    this.intervalSubscription.unsubscribe();
   }
 }
