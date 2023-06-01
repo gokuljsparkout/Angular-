@@ -29,8 +29,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
     this.intervalSubscription = customIntervalObservable
       .pipe(
-        map((data: number) => {
-          return 'Round' + (data + 1);
+        map((count: number) => {
+          return 'Round' + (count + 1);
         })
       )
       .subscribe(
