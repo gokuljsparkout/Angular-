@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,6 +8,10 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   suggestUserName() {
     const suggestedName = 'Superuser';
+  }
+
+  onSubmit(form: NgForm) {
+    console.log(form.value.email);
   }
   ngOnInit() {}
   constructor() {}
