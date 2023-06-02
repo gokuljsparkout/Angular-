@@ -11,6 +11,9 @@ export class AppComponent implements OnInit {
     const suggestedName = 'Superuser';
   }
 
+  show() {
+    
+   }
   onSubmit() {
     console.log(this.form);
   }
