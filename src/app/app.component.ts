@@ -7,6 +7,7 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent implements OnInit {
   defaultQuestion: string = 'pet';
+  answer: string;
   @ViewChild('form') form: NgForm;
   suggestUserName() {
     const suggestedName = 'Superuser';
