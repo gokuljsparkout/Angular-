@@ -6,14 +6,13 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  defaultQuestion: string = 'pet';
   @ViewChild('form') form: NgForm;
   suggestUserName() {
     const suggestedName = 'Superuser';
   }
 
-  show() {
-    
-   }
+  show() {}
   onSubmit() {
     console.log(this.form);
   }
