@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <form (ngSubmit)="onSubmit()" #form="ngForm">
-        <div id="user-data">
+        <div id="user-data" ngModelGroup="userdata" #userData="ngModelGroup">
           <div class="form-group">
             <label for="username">Username</label>
             <input
@@ -10,11 +10,15 @@
               id="username"
               class="form-control"
               name="username"
-              ngModel
               required
+              ngModel
             />
           </div>
-          <button class="btn btn-default" type="button">
+          <button
+            (click)="suggestUserName()"
+            class="btn btn-default"
+            type="button"
+          >
             Suggest an Username
           </button>
           <div class="form-group">
@@ -47,6 +51,9 @@
             <option value="teacher">Your first teacher ?</option>
           </select>
         </div>
+        <p *ngIf="!userData.valid && userData.touched">
+          Whole group is not valid
+        </p>
         <div class="form-group">
           <textarea
             name="questionAnswer"
@@ -56,6 +63,17 @@
           ></textarea>
         </div>
         <p>Your Reply : {{ answer }}</p>
+        <div class="radio" *ngFor="let gender of genders">
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              ngModel
+              [value]="gender"
+              [ngModel]="defaultGender"
+            />{{ gender }}
+          </label>
+        </div>
         <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
           Submit
         </button>
