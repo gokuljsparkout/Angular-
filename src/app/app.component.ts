@@ -36,7 +36,8 @@ export class AppComponent implements OnInit {
     this.user.email = this.form.value.userdata.email;
     this.user.gender = this.form.value.gender;
     this.user.secretQuestion = this.form.value.secret;
-    this.user.answer = this.form.value.answer;
+    this.user.answer = this.form.value.questionAnswer;
+    this.form.reset(); 
   }
 
   ngOnInit() {}
