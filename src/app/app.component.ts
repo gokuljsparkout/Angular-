@@ -11,23 +11,32 @@ export class AppComponent implements OnInit {
   answer: string;
   genders: string[] = ['male', 'female'];
   @ViewChild('form') form: NgForm;
+  user = {
+    username: '',
+    email: '',
+    secretQuestion: '',
+    answer: '',
+    gender: '',
+  };
+
   suggestUserName() {
     const suggestedName = 'Superuser';
-    // this.form.value.userdata.username = suggestedName;
-    //This method does not trigger ChangeDetection
-    console.log(this.form.value);
-    this.form.setValue({
-      ...this.form.value,
+    this.form.form.patchValue({
       userdata: {
-        ...this.form.value.userdata,
         username: suggestedName,
       },
     });
   }
+  submitted: boolean = false;
 
   show() {}
   onSubmit() {
-    console.log(this.form);
+    this.submitted = true;
+    this.user.username = this.form.value.userdata.username;
+    this.user.email = this.form.value.userdata.email;
+    this.user.gender = this.form.value.gender;
+    this.user.secretQuestion = this.form.value.secret;
+    this.user.answer = this.form.value.answer;
   }
 
   ngOnInit() {}
