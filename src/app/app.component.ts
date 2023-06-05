@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,10 +8,14 @@ import { FormControl, FormGroup, NgForm } from '@angular/forms';
 export class AppComponent implements OnInit {
   genders = ['male', 'female'];
   signupForm: FormGroup;
+
+  onSubmit() {
+    console.log(this.signupForm);
+  }
   ngOnInit() {
     this.signupForm = new FormGroup({
-      username: new FormControl(null),
-      email: new FormControl(null),
+      username: new FormControl('Gokul', Validators.required),
+      email: new FormControl(null, [Validators.email, Validators.required]),
       gender: new FormControl('male'),
     });
   }
