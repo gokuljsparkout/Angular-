@@ -6,40 +6,42 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  defaultQuestion: string = 'pet';
-  defaultGender: string = 'male';
-  answer: string;
-  genders: string[] = ['male', 'female'];
   @ViewChild('form') form: NgForm;
-  user = {
-    username: '',
-    email: '',
-    secretQuestion: '',
-    answer: '',
-    gender: '',
-  };
 
-  suggestUserName() {
-    const suggestedName = 'Superuser';
-    this.form.form.patchValue({
-      userdata: {
-        username: suggestedName,
-      },
-    });
-  }
+  defaultSubscription = 'Advanced';
+  subscriptions = ['Basic', 'Advanced', 'Pro'];
   submitted: boolean = false;
+  user = {
+    email: '',
+    subscription: '',
+    password: '',
+  };
+  pwd = '';
 
-  show() {}
-  onSubmit() {
-    this.submitted = true;
-    this.user.username = this.form.value.userdata.username;
-    this.user.email = this.form.value.userdata.email;
-    this.user.gender = this.form.value.gender;
-    this.user.secretQuestion = this.form.value.secret;
-    this.user.answer = this.form.value.questionAnswer;
-    this.form.reset(); 
+  check() {
+    console.log('change');
+    if (this.pwd.length < 8) {
+      // Update the validation status of the password field to 'INVALID'
+      this.form.controls['password'].setErrors({ invalid: true });
+    } else {
+      // Reset the validation status of the password field
+      this.form.controls['password'].setErrors(null);
+    }
   }
 
+  onSubmit() {
+    if (this.form.valid === false) {
+      alert('Form is invalid');
+    } else {
+      console.log(this.form);
+      this.user.email = this.form.value.email;
+      this.user.subscription = this.form.value.subscription;
+      this.user.password = this.form.value.password;
+      this.submitted = true;
+      // this.form.reset();
+    }
+  }
   ngOnInit() {}
+
   constructor() {}
 }
