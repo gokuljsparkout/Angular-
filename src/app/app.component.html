@@ -17,7 +17,18 @@
                 signupForm.get('userData.username').touched
               "
               class="help-block"
-              >Please Enter a valid username</span
+              ><span
+                *ngIf="
+                  signupForm.get('userData.username').errors['nameIsForbidden']
+                "
+              >
+                UserName Not Available</span
+              >
+              <span
+                *ngIf="signupForm.get('userData.username').errors['required']"
+              >
+                Please Enter Something</span
+              ></span
             >
           </div>
           <div class="form-group">
@@ -34,8 +45,8 @@
                 signupForm.get('userData.email').touched
               "
               class="help-block"
-              >Please Enter a valid username</span
             >
+            </span>
           </div>
         </div>
 
@@ -51,11 +62,12 @@
           <button class="btn btn-default" type="button" (click)="onAddHobby()">
             Add Hobby
           </button>
-          <div class="form-group" *ngFor="let hobbyControl of getControls(); let i = index">
+          <div
+            class="form-group"
+            *ngFor="let hobbyControl of getControls(); let i = index"
+          >
             <input type="text" [formControlName]="i" />
           </div>
-          
-          
         </div>
         <button class="btn btn-primary" type="submit">Submit</button>
       </form>
