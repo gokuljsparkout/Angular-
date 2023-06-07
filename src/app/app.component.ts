@@ -8,47 +8,46 @@ import { Observable } from 'rxjs-compat';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  projectForm: FormGroup;
-
-  projectStatus = ['Stable', 'Critical', 'Finished'];
-
-  forbiddenProjectName(control: FormControl): { [s: string]: boolean } {
-    if (control.value === 'Test') {
-      return {
-        forbiddenName: true,
-      };
-    }
-    return null;
+  servers = [
+    {
+      instanceType: 'medium',
+      name: 'Production Server',
+      status: 'stable',
+      started: new Date(15, 1, 2017),
+    },
+    {
+      instanceType: 'large',
+      name: 'User Database',
+      status: 'stable',
+      started: new Date(15, 1, 2017),
+    },
+    {
+      instanceType: 'small',
+      name: 'Development Server',
+      status: 'offline',
+      started: new Date(15, 1, 2017),
+    },
+    {
+      instanceType: 'small',
+      name: 'Testing Environment Server',
+      status: 'stable',
+      started: new Date(15, 1, 2017),
+    },
+  ];
+  getStatusClasses(server: {
+    instanceType: string;
+    name: string;
+    status: string;
+    started: Date;
+  }) {
+    return {
+      'list-group-item-success': server.status === 'stable',
+      'list-group-item-warning': server.status === 'offline',
+      'list-group-item-danger': server.status === 'critical',
+    };
   }
-  forbiddenEmail(control: FormControl): Promise<any> | Observable<any> {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        if (control.value === 'g@g.com') {
-          resolve({
-            forbiddenEmail: true,
-          });
-        }
-        resolve(null);
-      }, 1500);
-    });
-  }
 
-  ngOnInit() {
-    this.projectForm = new FormGroup({
-      projectName: new FormControl(null, [
-        Validators.required,
-        this.forbiddenProjectName.bind(this),
-      ]),
-      email: new FormControl(
-        null,
-        [Validators.required, Validators.email],
-        [this.forbiddenEmail.bind(this)]
-      ),
-      status: new FormControl('Critical'),
-    });
-  }
+  ngOnInit() {}
 
-  onSubmit() {
-    console.log(this.projectForm.value.projectName);
-  }
+  onSubmit() {}
 }
