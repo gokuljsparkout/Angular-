@@ -8,6 +8,7 @@ import { Observable } from 'rxjs-compat';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  filteredStatus = '';
   servers = [
     {
       instanceType: 'medium',
