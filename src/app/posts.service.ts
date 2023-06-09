@@ -30,7 +30,12 @@ export class PostService {
           }
           return postArray;
         })
-      )
-      
+      );
   }
-} 
+
+  clearPost() {
+    return this.http.delete(
+      'https://angulardb-899bf-default-rtdb.firebaseio.com/posts.json'
+    );
+  }
+}
