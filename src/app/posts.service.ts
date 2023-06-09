@@ -18,7 +18,7 @@ export class PostService {
   }
 
   fetchPost() {
-    this.http
+    return this.http
       .get<{ [key: string]: Post }>(
         'https://angulardb-899bf-default-rtdb.firebaseio.com/posts.json'
       )
@@ -31,6 +31,6 @@ export class PostService {
           return postArray;
         })
       )
-      .subscribe((postsArray) => {});
+      
   }
 } 
