@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs-compat';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -39,8 +40,17 @@ export class AppComponent implements OnInit {
   fetchPosts() {
     this.http
       .get('https://angulardb-899bf-default-rtdb.firebaseio.com/posts.json')
-      .subscribe((posts) => {
-        console.log(posts);
+      .pipe(
+        map((responseData) => {
+          const postArray = [];
+          for (const key in responseData) {
+            postArray.push({ ...responseData[key], id: key });
+          }
+          return postArray;
+        })
+      )
+      .subscribe((postsArray) => {
+        console.log(postsArray);
       });
   }
 }
