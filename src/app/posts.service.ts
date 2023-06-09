@@ -2,9 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Post } from './post.model';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 @Injectable()
 export class PostService {
   constructor(private http: HttpClient) {}
+
+  error = new Subject<string>();
   createAndStorePost(title: string, content: string) {
     const postData: Post = { title: title, content: content };
     this.http
@@ -12,9 +15,14 @@ export class PostService {
         'https://angulardb-899bf-default-rtdb.firebaseio.com/posts.json',
         postData
       )
-      .subscribe((responseData) => {
-        console.log(responseData);
-      });
+      .subscribe(
+        (responseData) => {
+          console.log(responseData);
+        },
+        (error) => {
+          this.error.next(error.message);
+        }
+      );
   }
 
   fetchPost() {

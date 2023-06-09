@@ -27,9 +27,13 @@ export class AppComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        this.error = error.error.error
+        this.error = error.error.error;
       }
     );
+
+    this.postService.error.subscribe((error) => {
+      this.error = error;
+    });
   }
 
   onCreatePost(postData: Post) {
