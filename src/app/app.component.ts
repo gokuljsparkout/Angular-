@@ -14,15 +14,22 @@ import { PostService } from './posts.service';
 export class AppComponent implements OnInit {
   isFetching: boolean = false;
   loadedPosts = [];
+  error = null;
 
   constructor(private http: HttpClient, private postService: PostService) {}
 
   ngOnInit() {
     this.isFetching = true;
-    this.postService.fetchPost().subscribe((postsArray) => {
-      this.loadedPosts = postsArray;
-      this.isFetching = false;
-    });
+    this.postService.fetchPost().subscribe(
+      (postsArray) => {
+        this.loadedPosts = postsArray;
+        this.isFetching = false;
+      },
+      (error) => {
+        console.log(error);
+        this.error = error.error.error
+      }
+    );
   }
 
   onCreatePost(postData: Post) {
@@ -34,16 +41,26 @@ export class AppComponent implements OnInit {
   }
 
   onClearPosts() {
-    this.postService.clearPost().subscribe(() => {
-      this.loadedPosts = [];
-    });
+    this.postService.clearPost().subscribe(
+      () => {
+        this.loadedPosts = [];
+      },
+      (error) => {
+        this.error = error.error;
+      }
+    );
   }
 
   fetchPosts() {
     this.isFetching = true;
-    this.postService.fetchPost().subscribe((postsArray) => {
-      this.loadedPosts = postsArray;
-      this.isFetching = false;
-    });
+    this.postService.fetchPost().subscribe(
+      (postsArray) => {
+        this.loadedPosts = postsArray;
+        this.isFetching = false;
+      },
+      (error) => {
+        this.error = error.message;
+      }
+    );
   }
 }
