@@ -53,7 +53,7 @@ export class AppComponent implements OnInit {
         })
       )
       .subscribe((postsArray) => {
-        console.log(postsArray);
+        this.loadedPosts = postsArray;
       });
   }
 }
