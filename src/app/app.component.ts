@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs-compat';
@@ -8,47 +9,29 @@ import { Observable } from 'rxjs-compat';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  filteredStatus = '';
-  servers = [
-    {
-      instanceType: 'medium',
-      name: 'Production Server',
-      status: 'stable',
-      started: new Date(15, 1, 2017),
-    },
-    {
-      instanceType: 'large',
-      name: 'User Database',
-      status: 'stable',
-      started: new Date(15, 1, 2017),
-    },
-    {
-      instanceType: 'small',
-      name: 'Development Server',
-      status: 'offline',
-      started: new Date(15, 1, 2017),
-    },
-    {
-      instanceType: 'small',
-      name: 'Testing Environment Server',
-      status: 'stable',
-      started: new Date(15, 1, 2017),
-    },
-  ];
-  getStatusClasses(server: {
-    instanceType: string;
-    name: string;
-    status: string;
-    started: Date;
-  }) {
-    return {
-      'list-group-item-success': server.status === 'stable',
-      'list-group-item-warning': server.status === 'offline',
-      'list-group-item-danger': server.status === 'critical',
-    };
-  }
+  loadedPosts = [];
+
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {}
 
-  onSubmit() {}
+  onCreatePost(postData: { title: string; content: string }) {
+
+    this.http
+      .post(
+        'https://angulardb-899bf-default-rtdb.firebaseio.com/posts.json',
+        postData
+      )
+      .subscribe((responseData) => {
+        console.log(responseData);
+      });
+  }
+
+  onFetchPosts() {
+    // Send Http request
+  }
+
+  onClearPosts() {
+    // Send Http request
+  }
 }
