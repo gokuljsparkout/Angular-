@@ -13,10 +13,11 @@ export class AppComponent implements OnInit {
 
   constructor(private http: HttpClient) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.fetchPosts();
+  }
 
   onCreatePost(postData: { title: string; content: string }) {
-
     this.http
       .post(
         'https://angulardb-899bf-default-rtdb.firebaseio.com/posts.json',
@@ -28,10 +29,18 @@ export class AppComponent implements OnInit {
   }
 
   onFetchPosts() {
-    // Send Http request
+    this.fetchPosts();
   }
 
   onClearPosts() {
     // Send Http request
+  }
+
+  fetchPosts() {
+    this.http
+      .get('https://angulardb-899bf-default-rtdb.firebaseio.com/posts.json')
+      .subscribe((posts) => {
+        console.log(posts);
+      });
   }
 }
