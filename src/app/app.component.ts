@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs-compat';
 import { map } from 'rxjs/operators';
 import { Post } from './post.model';
+import { PostService } from './posts.service';
 
 @Component({
   selector: 'app-root',
@@ -14,21 +15,14 @@ export class AppComponent implements OnInit {
   isFetching: boolean = false;
   loadedPosts = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private postService: PostService) {}
 
   ngOnInit() {
     this.fetchPosts();
   }
 
   onCreatePost(postData: Post) {
-    this.http
-      .post<{ name: string }>(
-        'https://angulardb-899bf-default-rtdb.firebaseio.com/posts.json',
-        postData
-      )
-      .subscribe((responseData) => {
-        console.log(responseData);
-      });
+    this.postService.createAndStorePost(postData.title, postData.content);
   }
 
   onFetchPosts() {
@@ -41,22 +35,5 @@ export class AppComponent implements OnInit {
 
   fetchPosts() {
     this.isFetching = true;
-    this.http
-      .get<{ [key: string]: Post }>(
-        'https://angulardb-899bf-default-rtdb.firebaseio.com/posts.json'
-      )
-      .pipe(
-        map((responseData) => {
-          const postArray: Post[] = [];
-          for (const key in responseData) {
-            postArray.push({ ...responseData[key], id: key });
-          }
-          return postArray;
-        })
-      )
-      .subscribe((postsArray) => {
-        this.isFetching = false;
-        this.loadedPosts = postsArray;
-      });
   }
 }
