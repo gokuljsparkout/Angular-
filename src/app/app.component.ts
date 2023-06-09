@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs-compat';
 import { map } from 'rxjs/operators';
+import { Post } from './post.model';
 
 @Component({
   selector: 'app-root',
@@ -18,9 +19,9 @@ export class AppComponent implements OnInit {
     this.fetchPosts();
   }
 
-  onCreatePost(postData: { title: string; content: string }) {
+  onCreatePost(postData: Post) {
     this.http
-      .post(
+      .post<{ name: string }>(
         'https://angulardb-899bf-default-rtdb.firebaseio.com/posts.json',
         postData
       )
@@ -39,10 +40,12 @@ export class AppComponent implements OnInit {
 
   fetchPosts() {
     this.http
-      .get('https://angulardb-899bf-default-rtdb.firebaseio.com/posts.json')
+      .get<{ [key: string]: Post }>(
+        'https://angulardb-899bf-default-rtdb.firebaseio.com/posts.json'
+      )
       .pipe(
         map((responseData) => {
-          const postArray = [];
+          const postArray: Post[] = [];
           for (const key in responseData) {
             postArray.push({ ...responseData[key], id: key });
           }
