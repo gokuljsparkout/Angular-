@@ -60,8 +60,13 @@ export class AppComponent implements OnInit {
         this.isFetching = false;
       },
       (error) => {
+        this.isFetching = false;
         this.error = error.message;
       }
     );
+  }
+
+  onHandleError() {
+    this.error = null;
   }
 }
