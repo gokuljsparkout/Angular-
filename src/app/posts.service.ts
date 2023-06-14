@@ -26,6 +26,9 @@ export class PostService {
   }
 
   fetchPost() {
+    let searchParams = new HttpParams();
+    searchParams = searchParams.append('print', 'pretty');
+    searchParams = searchParams.append('custom', 'key');
     return this.http
       .get<{ [key: string]: Post }>(
         'https://angulardb-899bf-default-rtdb.firebaseio.com/posts.json',
@@ -33,7 +36,7 @@ export class PostService {
           headers: new HttpHeaders({
             'Custom-Header': 'Hello',
           }),
-          params: new HttpParams().set('print', 'pretty'),
+          params: searchParams,
         }
       )
       .pipe(
