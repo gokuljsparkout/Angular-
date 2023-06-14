@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Post } from './post.model';
 import { Injectable } from '@angular/core';
 import { map, catchError } from 'rxjs/operators';
-import { Subject , throwError } from 'rxjs';
+import { Subject, throwError } from 'rxjs';
 @Injectable()
 export class PostService {
   constructor(private http: HttpClient) {}
@@ -28,7 +28,12 @@ export class PostService {
   fetchPost() {
     return this.http
       .get<{ [key: string]: Post }>(
-        'https://angulardb-899bf-default-rtdb.firebaseio.com/posts.json'
+        'https://angulardb-899bf-default-rtdb.firebaseio.com/posts.json',
+        {
+          headers: new HttpHeaders({
+            'Custom-Header': 'Hello',
+          }),
+        }
       )
       .pipe(
         map((responseData) => {
@@ -38,8 +43,8 @@ export class PostService {
           }
           return postArray;
         }),
-        catchError((errorRes) =>{
-          return throwError(errorRes)
+        catchError((errorRes) => {
+          return throwError(errorRes);
         })
       );
   }
