@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Post } from './post.model';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+import { Subject , throwError } from 'rxjs';
 @Injectable()
 export class PostService {
   constructor(private http: HttpClient) {}
@@ -37,6 +37,9 @@ export class PostService {
             postArray.push({ ...responseData[key], id: key });
           }
           return postArray;
+        }),
+        catchError((errorRes) =>{
+          return throwError(errorRes)
         })
       );
   }
