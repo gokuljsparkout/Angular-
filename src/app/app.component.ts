@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { interval, of } from 'rxjs';
-import { mergeMap, mergeMapTo, take } from 'rxjs/operators';
+import { fromEvent, interval, of } from 'rxjs';
+import { debounceTime, mergeMap, mergeMapTo, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -12,12 +12,10 @@ export class AppComponent implements OnInit {
   words: any[] = [];
 
   ngOnInit() {
-    of('Hello', 'World')
-      .pipe(mergeMap((value) => of(value.split(''))))
-      .subscribe((result) => {
-        console.log(result);
-        this.words?.push(...result);
-      });
-    console.log(this.words);
+    const inputElement = document.getElementById('name');
+
+fromEvent(inputElement, 'input')
+  .pipe(debounceTime(1000))
+  .subscribe(event => console.log(event.target));
   }
 }
