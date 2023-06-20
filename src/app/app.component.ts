@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +11,8 @@ export class AppComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    of<number>(1, 2, 3) // Specify the type of values emitted (in this case, numbers)
-  .pipe(map(value => value * 2))
+    of<number>(1, 2, 3,4,5,6) // Specify the type of values emitted (in this case, numbers)
+  .pipe(filter(value => value%2 !== 0))
   .subscribe(result => console.log(result));
   }
 }
