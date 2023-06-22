@@ -10,28 +10,28 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Form</h1>
                   </div>
-                  <form
-                    class="user text-center"
-                    [formGroup]="feedbackForm"
-                  >
+                  <form class="text-center" [formGroup]="feedbackForm">
                     <label for="pet-select">Choose one:</label>
 
                     <select
                       class="form-control"
-                      name="pets"
-                      id="pet-select"
-                      formControlName="formType"
+                      name="formCategory"
+                      id="formCategory"
+                      formControlName="formCategory"
                     >
-                      <option value="General Feedback">General Feedback</option>
-                      <option value="Bug Report">Bug Report</option>
-                      <option value="Feature Request">Feature Request</option>
+                      <option  class="form-control" value="General Feedback">General Feedback</option>
+                      <option   class="form-control" value="Bug Report">Bug Report</option>
+                      <option  class="form-control" value="Feature Request">Feature Request</option>
                       >
                     </select>
                   </form>
 
                   <div
                     class="feedback"
-                    *ngIf="feedbackForm.value.formType === 'General Feedback'"
+                    *ngIf="
+                      feedbackForm.controls['formCategory'].value ===
+                      'General Feedback'
+                    "
                   >
                     <div class="text-center">
                       <h1 class="h4 text-gray-900 mb-4">
@@ -41,7 +41,7 @@
                     <form
                       class="user text-center"
                       [formGroup]="generalFeedbackForm"
-                      (ngSubmit)="onSubmit(1)"
+                      (ngSubmit)="onSubmit(generalFeedbackForm)"
                     >
                       <label class="form-control user" for="feedback"
                         >Feedback</label
@@ -54,23 +54,24 @@
                         formControlName="feedback"
                       ></textarea>
                       <div
-                      *ngIf="
-                        generalFeedbackForm.get('feedback')?.invalid &&
-                        (generalFeedbackForm.get('feedback')?.dirty ||
-                          generalFeedbackForm.get('feedback')?.touched)
-                      "
-                      class="text-danger"
-                    >
-                      <div
-                        class="small"
-                        *ngIf="generalFeedbackForm.get('feedback')?.errors?.['required']"
+                        *ngIf="
+                          generalFeedbackForm.get('feedback')?.invalid &&
+                          (generalFeedbackForm.get('feedback')?.dirty ||
+                            generalFeedbackForm.get('feedback')?.touched)
+                        "
+                        class="text-danger"
                       >
-                        Feedback is required.
-                      </div>
+                        <div
+                          class="small"
+                          *ngIf="generalFeedbackForm.get('feedback')?.errors?.['required']"
+                        >
+                          Feedback is required.
+                        </div>
                       </div>
                       <button
                         class="btn btn-primary btn-user btn-block mt-4"
                         type="submit"
+                        [disabled]="generalFeedbackForm.invalid"
                       >
                         Submit
                       </button>
@@ -79,7 +80,9 @@
 
                   <div
                     class="bugReport"
-                    *ngIf="feedbackForm.value.formType === 'Bug Report'"
+                    *ngIf="
+                      feedbackForm.controls['formCategory'].value === 'Bug Report'
+                    "
                   >
                     <div class="text-center">
                       <h1 class="h4 text-gray-900 mb-4">Bug Report Form</h1>
@@ -87,7 +90,7 @@
                     <form
                       class="user text-center"
                       [formGroup]="bugReportForm"
-                      (ngSubmit)="onSubmit(2)"
+                      (ngSubmit)="onSubmit(bugReportForm)"
                     >
                       <label class="form-control user" for="bugReportTitle"
                         >Title</label
@@ -100,19 +103,19 @@
                         formControlName="bugReportTitle"
                       />
                       <div
-                      *ngIf="
-                        bugReportForm.get('bugReportTitle')?.invalid &&
-                        (bugReportForm.get('bugReportTitle')?.dirty ||
-                          bugReportForm.get('bugReportTitle')?.touched)
-                      "
-                      class="text-danger"
-                    >
-                      <div
-                        class="small"
-                        *ngIf="bugReportForm.get('bugReportTitle')?.errors?.['required']"
+                        *ngIf="
+                          bugReportForm.get('bugReportTitle')?.invalid &&
+                          (bugReportForm.get('bugReportTitle')?.dirty ||
+                            bugReportForm.get('bugReportTitle')?.touched)
+                        "
+                        class="text-danger"
                       >
-                        Title is required.
-                      </div>
+                        <div
+                          class="small"
+                          *ngIf="bugReportForm.get('bugReportTitle')?.errors?.['required']"
+                        >
+                          Title is required.
+                        </div>
                       </div>
                       <hr />
                       <label class="form-control user" for="bugReportDetails"
@@ -126,23 +129,24 @@
                         formControlName="bugReportDetails"
                       ></textarea>
                       <div
-                      *ngIf="
-                        bugReportForm.get('bugReportDetails')?.invalid &&
-                        (bugReportForm.get('bugReportDetails')?.dirty ||
-                          bugReportForm.get('bugReportDetails')?.touched)
-                      "
-                      class="text-danger"
-                    >
-                      <div
-                        class="small"
-                        *ngIf="bugReportForm.get('bugReportDetails')?.errors?.['required']"
+                        *ngIf="
+                          bugReportForm.get('bugReportDetails')?.invalid &&
+                          (bugReportForm.get('bugReportDetails')?.dirty ||
+                            bugReportForm.get('bugReportDetails')?.touched)
+                        "
+                        class="text-danger"
                       >
-                        Details are required.
-                      </div>
+                        <div
+                          class="small"
+                          *ngIf="bugReportForm.get('bugReportDetails')?.errors?.['required']"
+                        >
+                          Details are required.
+                        </div>
                       </div>
                       <button
                         class="btn btn-primary btn-user btn-block mt-3"
                         type="submit"
+                        [disabled]="bugReportForm.invalid"
                       >
                         Submit
                       </button>
@@ -151,7 +155,10 @@
 
                   <div
                     class="featureRequest"
-                    *ngIf="feedbackForm.value.formType === 'Feature Request'"
+                    *ngIf="
+                      feedbackForm.controls['formCategory'].value ===
+                      'Feature Request'
+                    "
                   >
                     <div class="text-center">
                       <h1 class="h4 text-gray-900 mb-4">
@@ -161,7 +168,7 @@
                     <form
                       class="user text-center"
                       [formGroup]="featureRequestForm"
-                      (ngSubmit)="onSubmit(3)"
+                      (ngSubmit)="onSubmit(featureRequestForm)"
                     >
                       <label class="form-control user" for="featureRequestTitle"
                         >Title</label
@@ -174,19 +181,22 @@
                         formControlName="featureRequestTitle"
                       />
                       <div
-                      *ngIf="
-                        featureRequestForm.get('featureRequestTitle')?.invalid &&
-                        (featureRequestForm.get('featureRequestTitle')?.dirty ||
-                          featureRequestForm.get('featureRequestTitle')?.touched)
-                      "
-                      class="text-danger"
-                    >
-                      <div
-                        class="small"
-                        *ngIf="featureRequestForm.get('featureRequestTitle')?.errors?.['required']"
+                        *ngIf="
+                          featureRequestForm.get('featureRequestTitle')
+                            ?.invalid &&
+                          (featureRequestForm.get('featureRequestTitle')
+                            ?.dirty ||
+                            featureRequestForm.get('featureRequestTitle')
+                              ?.touched)
+                        "
+                        class="text-danger"
                       >
-                        Title is required.
-                      </div>
+                        <div
+                          class="small"
+                          *ngIf="featureRequestForm.get('featureRequestTitle')?.errors?.['required']"
+                        >
+                          Title is required.
+                        </div>
                       </div>
                       <hr />
                       <label
@@ -202,23 +212,27 @@
                         formControlName="featureRequestDescription"
                       ></textarea>
                       <div
-                      *ngIf="
-                        featureRequestForm.get('featureRequestDescription')?.invalid &&
-                        (featureRequestForm.get('featureRequestDescription')?.dirty ||
-                          featureRequestForm.get('featureRequestDescription')?.touched)
-                      "
-                      class="text-danger"
-                    >
-                      <div
-                        class="small"
-                        *ngIf="featureRequestForm.get('featureRequestDescription')?.errors?.['required']"
+                        *ngIf="
+                          featureRequestForm.get('featureRequestDescription')
+                            ?.invalid &&
+                          (featureRequestForm.get('featureRequestDescription')
+                            ?.dirty ||
+                            featureRequestForm.get('featureRequestDescription')
+                              ?.touched)
+                        "
+                        class="text-danger"
                       >
-                        Description is required.
-                      </div>
+                        <div
+                          class="small"
+                          *ngIf="featureRequestForm.get('featureRequestDescription')?.errors?.['required']"
+                        >
+                          Description is required.
+                        </div>
                       </div>
                       <button
                         class="btn btn-primary btn-user btn-block mt-3"
                         type="submit"
+                        [disabled]="featureRequestForm.invalid"
                       >
                         Submit
                       </button>
