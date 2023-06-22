@@ -1,0 +1,305 @@
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-4 col-lg-4 col-md-4">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">Form</h1>
+                  </div>
+                  <form
+                    class="user text-center"
+                    [formGroup]="feedbackForm"
+                  >
+                    <label for="pet-select">Choose one:</label>
+
+                    <select
+                      class="form-control"
+                      name="pets"
+                      id="pet-select"
+                      formControlName="formType"
+                    >
+                      <option value="General Feedback">General Feedback</option>
+                      <option value="Bug Report">Bug Report</option>
+                      <option value="Feature Request">Feature Request</option>
+                      >
+                    </select>
+                  </form>
+
+                  <div
+                    class="feedback"
+                    *ngIf="feedbackForm.value.formType === 'General Feedback'"
+                  >
+                    <div class="text-center">
+                      <h1 class="h4 text-gray-900 mb-4">
+                        General Feedback Form
+                      </h1>
+                    </div>
+                    <form
+                      class="user text-center"
+                      [formGroup]="generalFeedbackForm"
+                      (ngSubmit)="onSubmit(1)"
+                    >
+                      <label class="form-control user" for="feedback"
+                        >Feedback</label
+                      >
+                      <textarea
+                        class="form-control"
+                        name="feedback"
+                        id="feedback"
+                        rows="5"
+                        formControlName="feedback"
+                      ></textarea>
+                      <div
+                      *ngIf="
+                        generalFeedbackForm.get('feedback')?.invalid &&
+                        (generalFeedbackForm.get('feedback')?.dirty ||
+                          generalFeedbackForm.get('feedback')?.touched)
+                      "
+                      class="text-danger"
+                    >
+                      <div
+                        class="small"
+                        *ngIf="generalFeedbackForm.get('feedback')?.errors?.['required']"
+                      >
+                        Feedback is required.
+                      </div>
+                      </div>
+                      <button
+                        class="btn btn-primary btn-user btn-block mt-4"
+                        type="submit"
+                      >
+                        Submit
+                      </button>
+                    </form>
+                  </div>
+
+                  <div
+                    class="bugReport"
+                    *ngIf="feedbackForm.value.formType === 'Bug Report'"
+                  >
+                    <div class="text-center">
+                      <h1 class="h4 text-gray-900 mb-4">Bug Report Form</h1>
+                    </div>
+                    <form
+                      class="user text-center"
+                      [formGroup]="bugReportForm"
+                      (ngSubmit)="onSubmit(2)"
+                    >
+                      <label class="form-control user" for="bugReportTitle"
+                        >Title</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="bugReportTitle"
+                        id="bugReportTitle"
+                        formControlName="bugReportTitle"
+                      />
+                      <div
+                      *ngIf="
+                        bugReportForm.get('bugReportTitle')?.invalid &&
+                        (bugReportForm.get('bugReportTitle')?.dirty ||
+                          bugReportForm.get('bugReportTitle')?.touched)
+                      "
+                      class="text-danger"
+                    >
+                      <div
+                        class="small"
+                        *ngIf="bugReportForm.get('bugReportTitle')?.errors?.['required']"
+                      >
+                        Title is required.
+                      </div>
+                      </div>
+                      <hr />
+                      <label class="form-control user" for="bugReportDetails"
+                        >Details</label
+                      >
+                      <textarea
+                        class="form-control"
+                        name="bugReportDetails"
+                        id="bugReportDetails"
+                        rows="5"
+                        formControlName="bugReportDetails"
+                      ></textarea>
+                      <div
+                      *ngIf="
+                        bugReportForm.get('bugReportDetails')?.invalid &&
+                        (bugReportForm.get('bugReportDetails')?.dirty ||
+                          bugReportForm.get('bugReportDetails')?.touched)
+                      "
+                      class="text-danger"
+                    >
+                      <div
+                        class="small"
+                        *ngIf="bugReportForm.get('bugReportDetails')?.errors?.['required']"
+                      >
+                        Details are required.
+                      </div>
+                      </div>
+                      <button
+                        class="btn btn-primary btn-user btn-block mt-3"
+                        type="submit"
+                      >
+                        Submit
+                      </button>
+                    </form>
+                  </div>
+
+                  <div
+                    class="featureRequest"
+                    *ngIf="feedbackForm.value.formType === 'Feature Request'"
+                  >
+                    <div class="text-center">
+                      <h1 class="h4 text-gray-900 mb-4">
+                        Feature Request Form
+                      </h1>
+                    </div>
+                    <form
+                      class="user text-center"
+                      [formGroup]="featureRequestForm"
+                      (ngSubmit)="onSubmit(3)"
+                    >
+                      <label class="form-control user" for="featureRequestTitle"
+                        >Title</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="featureRequestTitle"
+                        id="featureRequestTitle"
+                        formControlName="featureRequestTitle"
+                      />
+                      <div
+                      *ngIf="
+                        featureRequestForm.get('featureRequestTitle')?.invalid &&
+                        (featureRequestForm.get('featureRequestTitle')?.dirty ||
+                          featureRequestForm.get('featureRequestTitle')?.touched)
+                      "
+                      class="text-danger"
+                    >
+                      <div
+                        class="small"
+                        *ngIf="featureRequestForm.get('featureRequestTitle')?.errors?.['required']"
+                      >
+                        Title is required.
+                      </div>
+                      </div>
+                      <hr />
+                      <label
+                        class="form-control user"
+                        for="featureRequestDescription"
+                        >Description</label
+                      >
+                      <textarea
+                        class="form-control"
+                        name="featureRequestDescription"
+                        id="featureRequestDescription"
+                        rows="5"
+                        formControlName="featureRequestDescription"
+                      ></textarea>
+                      <div
+                      *ngIf="
+                        featureRequestForm.get('featureRequestDescription')?.invalid &&
+                        (featureRequestForm.get('featureRequestDescription')?.dirty ||
+                          featureRequestForm.get('featureRequestDescription')?.touched)
+                      "
+                      class="text-danger"
+                    >
+                      <div
+                        class="small"
+                        *ngIf="featureRequestForm.get('featureRequestDescription')?.errors?.['required']"
+                      >
+                        Description is required.
+                      </div>
+                      </div>
+                      <button
+                        class="btn btn-primary btn-user btn-block mt-3"
+                        type="submit"
+                      >
+                        Submit
+                      </button>
+                    </form>
+                  </div>
+
+                  <!-- <form
+                      class="user"
+                      [formGroup]="loginForm"
+                      (ngSubmit)="onLogin()"
+                    >
+                      <div class="form-group">
+                        <input
+                          type="email"
+                          class="form-control form-control-user"
+                          id="exampleInputEmail"
+                          aria-describedby="emailHelp"
+                          placeholder="Email Address..."
+                          formControlName="email"
+                        />
+                        <div
+                          *ngIf="
+                            loginForm.get('email')?.invalid &&
+                            (loginForm.get('email')?.dirty ||
+                              loginForm.get('email')?.touched)
+                          "
+                          class="text-danger"
+                        >
+                          <div
+                            class="small"
+                            *ngIf="loginForm.get('email')?.errors?.['required']"
+                          >
+                            Email is required.
+                          </div>
+                          <div
+                            class="small"
+                            *ngIf="loginForm.get('email')?.errors?.['email']"
+                          >
+                            Please enter a valid email address.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <input
+                          type="password"
+                          class="form-control form-control-user"
+                          id="exampleInputPassword"
+                          placeholder="Password"
+                          formControlName="password"
+                        />
+                        <div
+                          *ngIf="
+                            loginForm.get('password')?.invalid &&
+                            (loginForm.get('password')?.dirty ||
+                              loginForm.get('password')?.touched)
+                          "
+                          class="text-danger"
+                        >
+                          <div
+                            class="small"
+                            *ngIf="loginForm.get('password')?.errors?.['required']"
+                          >
+                            Password is required.
+                          </div>
+                        </div>
+                      </div>
+                      <button
+                        [disabled]="!loginForm.valid"
+                        class="btn btn-primary btn-user btn-block"
+                        type="submit"
+                      >
+                        Login
+                      </button>
+                    </form> -->
+                  <hr />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
