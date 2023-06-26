@@ -6,10 +6,10 @@ const routes: Routes = [
     path: '',
     children: [
       {
-        path: 'feedback',
+        path: 'example',
         loadChildren: () =>
-          import('src/app/pages/feedback-form/feedback-form.module').then(
-            (x) => x.FeedbackFormModule
+          import('src/app/pages/example/example.module').then(
+            (x) => x.ExampleModule
           ),
       },
     ],
