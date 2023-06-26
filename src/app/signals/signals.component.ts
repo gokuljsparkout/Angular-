@@ -14,6 +14,8 @@ export class SignalsComponent implements OnInit {
 constructor(){
   effect(() => {
     console.log('Counter value', this.counter());
+    //if a signal state is used inside effect...
+    //the signal state becomes a dependency implicitly
 
     if (this.counter() === 5) {
       console.log('Counter value is equal 5!');
