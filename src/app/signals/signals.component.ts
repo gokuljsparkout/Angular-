@@ -1,5 +1,5 @@
 import { NgFor } from '@angular/common';
-import { Component, OnInit, computed, effect, signal } from '@angular/core';
+import { Component, OnInit, computed, effect, signal, untracked } from '@angular/core';
 
 @Component({
   selector: 'app-signals',
@@ -13,13 +13,16 @@ export class SignalsComponent implements OnInit {
   isEqual = computed(() => this.counter() === 5);
 constructor(){
   effect(() => {
-    console.log('Counter value', this.counter());
+    // console.log('Counter value', this.counter());
     //if a signal state is used inside effect...
     //the signal state becomes a dependency implicitly
 
-    if (this.counter() === 5) {
-      console.log('Counter value is equal 5!');
-    }
+    //if u want to use a signal inside effect but it not as a dependency...
+    //use untracked()
+    untracked(()=>console.log(this.actions())) 
+    // if (this.counter() === 5) {
+    //   console.log('Counter value is equal 5!');
+    // }
   });
 }
   ngOnInit() {
